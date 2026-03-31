@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AdminCat – The Control Station for Your Life</title>
+   <link rel="stylesheet" href="css/style.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap"
+    rel="stylesheet" />
+
+</head>
+
+<body>
+
+  <!-- ═══════════════ NAV ═══════════════ -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">
+      <img src="images/logo.png" width="150">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Service</a></li>
+      <li><a href="#">Features</a></li>
+      <li><a href="#">Our Team</a></li>
+      <li><a href="#">FAQ</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-ghost">Login</button>
+      <button class="btn-primary">Sign up</button>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+    <a href="#">Service</a>
+    <a href="#">Features</a>
+    <a href="#">Our Team</a>
+    <a href="#">FAQ</a>
+    <a href="#">Login</a>
+    <button class="btn-primary" style="width:100%">Sign up</button>
+  </div>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="hero">
+    <div class="hero-slider">
+
+      <!-- Slide 1 -->
+      <div class="hero-slide active">
+        <div class="hero-text">
+          <h1>The Control station<br>for your life</h1>
+          <p>Manage finances, records, and daily operations from one intuitive platform built for clarity, speed, and
+            growth. Take back control of your schedule today.</p>
+          <div class="hero-btns">
+            <button class="btn-primary" style="padding:13px 28px;font-size:1rem">Try AdminCat today</button>
+            <button class="btn-outline">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+              Watch Demo
+            </button>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="images/side-ban.png" alt="AdminCat Dashboard">
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="hero-slide">
+        <div class="hero-text">
+          <h1>Secure your family's<br>documents</h1>
+          <p>Store, organise and access all your important files from anywhere in the world with military-grade
+            encryption and full GDPR compliance built in.</p>
+          <div class="hero-btns">
+            <button class="btn-primary" style="padding:13px 28px;font-size:1rem">Get Started Free</button>
+            <button class="btn-outline">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+              Watch Demo
+            </button>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="images/side-ban.png" alt="Secure Documents">
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="hero-slide">
+        <div class="hero-text">
+          <h1>Automate your<br>daily operations</h1>
+          <p>Smart reminders, automated emails, and streamlined workflows keep you ahead of every deadline without
+            the manual overhead.</p>
+          <div class="hero-btns">
+            <button class="btn-primary" style="padding:13px 28px;font-size:1rem">Start Automating</button>
+            <button class="btn-outline">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+              Watch Demo
+            </button>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="images/side-ban.png" alt="Automation">
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Indicators -->
+    <div class="hero-indicators">
+      <button class="hero-dot active" onclick="goToSlide(0)" aria-label="Slide 1"></button>
+      <button class="hero-dot" onclick="goToSlide(1)" aria-label="Slide 2"></button>
+      <button class="hero-dot" onclick="goToSlide(2)" aria-label="Slide 3"></button>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FEATURES ═══════════════ -->
+  <section class="features">
+    <div class="features-grid">
+      <div class="feature-card reveal delay-1">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+        </div>
+        <h3>Family Spaces</h3>
+        <p>Our membership management software provides full automation of membership renewals and payments.</p>
+      </div>
+      <div class="feature-card reveal delay-2">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+            <path d="M12 12v6" />
+            <path d="M9 15l3-3 3 3" /></svg>
+        </div>
+        <h3>Secure Clouds</h3>
+        <p>Highly encrypted cloud storage for your family documents, making sure your data is always safe and
+          accessible.</p>
+      </div>
+      <div class="feature-card reveal delay-3">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" /></svg>
+        </div>
+        <h3>Smart Emails &amp; Reminders</h3>
+        <p>Automated communication tools that keep your community engaged without the manual overhead.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ BLOG ═══════════════ -->
+  <section class="blog">
+    <div class="section-header reveal">
+      <h2>See what's new with AdminCat</h2>
+      <p>The Nexcent blog is the best place to read about the latest membership insights, trends and more. See who's
+        joining the community, read about how our community are increasing their membership income and lots more.</p>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card reveal delay-1">
+        <div class="blog-img">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <rect width="48" height="48" rx="10" fill="#dbeafe" />
+            <path d="M14 34V18l10-6 10 6v16H28v-8h-8v8H14z" fill="#2563eb" /></svg>
+        </div>
+        <div class="blog-body">
+          <h3>Creating Streamlined Safeguarding Processes with OneRen</h3>
+          <a href="#" class="read-more">Readmore →</a>
+        </div>
+      </div>
+      <div class="blog-card reveal delay-2">
+        <div class="blog-img">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <rect width="48" height="48" rx="10" fill="#dbeafe" />
+            <circle cx="24" cy="22" r="8" fill="#2563eb" />
+            <path d="M16 36c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round"
+              fill="none" /></svg>
+        </div>
+        <div class="blog-body">
+          <h3>What are your safeguarding responsibilities and how can you manage them?</h3>
+          <a href="#" class="read-more">Readmore →</a>
+        </div>
+      </div>
+      <div class="blog-card reveal delay-3">
+        <div class="blog-img">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <rect width="48" height="48" rx="10" fill="#dbeafe" />
+            <rect x="12" y="16" width="24" height="18" rx="3" fill="#2563eb" />
+            <path d="M18 12h12v4H18z" fill="#93c5fd" /></svg>
+        </div>
+        <div class="blog-body">
+          <h3>Revamping the Membership Model with Triathlon Australia</h3>
+          <a href="#" class="read-more">Readmore →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CTA BAND ═══════════════ -->
+  <section class="cta-band">
+    <h2 class="reveal">Want to try<br>AdminCat out?</h2>
+    <button class="btn-demo reveal">Get a Demo →</button>
+  </section>
+
+  <!-- ═══════════════ TESTIMONIAL ═══════════════ -->
+  <section class="testimonial">
+    <div class="testimonial-photo reveal-left">
+      <div>
+        <div class="photo-frame">
+          <div class="photo-person">👤</div>
+        </div>
+        <div class="photo-label">Jhon Doe, Student</div>
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+            class="star">★</span><span class="star">★</span>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-content reveal-right">
+      <div class="quote-icon">"</div>
+      <blockquote>My paperwork was always a challenge. Now I consolidate and find my documents in a few seconds. You are
+        sooo smart!</blockquote>
+      <cite>— Jhon Doe, Student</cite>
+      <div class="quote-close">"</div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SECURITY ═══════════════ -->
+  <section class="security">
+    <div class="security-inner">
+      <div class="security-text reveal-left">
+        <h2>German-Engineered<br><span>Security data</span></h2>
+        <p>Your data is encrypted twice. Hosted exclusively in Frankfurt, Germany. Fully GDPR compliant. Your privacy is
+          our priority.</p>
+        <ul class="security-list">
+          <li>
+            <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" /></svg></div>
+            Double Encryption
+          </li>
+          <li>
+            <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" /></svg></div>
+            2FA Authentication
+          </li>
+          <li>
+            <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" /></svg></div>
+            German Servers
+          </li>
+          <li>
+            <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" /></svg></div>
+            GDPR Compliant
+          </li>
+        </ul>
+      </div>
+      <div class="security-diagram reveal-right">
+        <div class="diagram-wrap">
+          <svg class="d-svg" viewBox="0 0 300 260">
+            <line x1="150" y1="130" x2="50" y2="50" stroke="#dbeafe" stroke-width="1.5" stroke-dasharray="4 3" />
+            <line x1="150" y1="130" x2="250" y2="50" stroke="#dbeafe" stroke-width="1.5" stroke-dasharray="4 3" />
+            <line x1="150" y1="130" x2="50" y2="210" stroke="#dbeafe" stroke-width="1.5" stroke-dasharray="4 3" />
+            <line x1="150" y1="130" x2="250" y2="210" stroke="#dbeafe" stroke-width="1.5" stroke-dasharray="4 3" />
+          </svg>
+          <div class="d-node" style="top:20px;left:20px;">🔑</div>
+          <div class="d-node" style="top:20px;right:20px;">🛡️</div>
+          <div class="d-node" style="bottom:20px;left:20px;">📁</div>
+          <div class="d-node" style="bottom:20px;right:20px;">🔒</div>
+          <div class="d-center">🏛️</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ STATS ═══════════════ -->
+  <section class="stats">
+    <div class="stats-grid">
+      <div class="stat-item reveal delay-1">
+        <span class="stat-num" data-target="10000">0</span>
+        <span class="stat-label">Shared Documents</span>
+      </div>
+      <div class="stat-item reveal delay-2">
+        <span class="stat-num">2GB</span>
+        <span class="stat-label">Storage Spaces</span>
+      </div>
+      <div class="stat-item reveal delay-3">
+        <span class="stat-num" data-target="50">0</span>
+        <span class="stat-label">Currency Supported</span>
+      </div>
+      <div class="stat-item reveal delay-4">
+        <span class="stat-num" data-target="99">0</span>
+        <span class="stat-label">Uptime Guaranteed</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>
+          <img src="images/logo.png" width="150">
+        </h3>
+        <p>The ultimate dashboard for the modern digital sovereign. Managed in Germany, deployed globally.</p>
+        <div class="footer-social">
+          <button class="social-btn">𝕏</button>
+          <button class="social-btn">in</button>
+          <button class="social-btn">f</button>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Security Hub</a></li>
+          <li><a href="#">Modules</a></li>
+          <li><a href="#">Roadmap</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">Community Forum</a></li>
+          <li><a href="#">API Status</a></li>
+          <li><a href="#">Help Center</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 AdminCat Infrastructure GmbH. All rights reserved. Made with ❤ from Germany &amp; Nigeria</p>
+      <div class="footer-badge">
+        <span class="badge-dot"></span>
+        All systems operational
+      </div>
+    </div>
+  </footer>
+
+ <script>
+  // ── Mobile menu toggle
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const burger = document.querySelector('.hamburger');
+    menu.classList.toggle('open');
+    burger.classList.toggle('active');
+  }
+
+  // Close menu when a link is clicked
+  document.querySelectorAll('#mobileMenu a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.querySelector('.hamburger').classList.remove('active');
+    });
+  });
+
+  // Close menu on outside click
+  document.addEventListener('click', (e) => {
+    const menu = document.getElementById('mobileMenu');
+    const burger = document.querySelector('.hamburger');
+    if (menu.classList.contains('open') && !menu.contains(e.target) && !burger.contains(e.target)) {
+      menu.classList.remove('open');
+      burger.classList.remove('active');
+    }
+  });
+
+  // ── Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // ── Sticky nav shadow
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    nav.style.boxShadow = window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,0.08)' : 'none';
+  });
+
+  // ── Counter animation
+  function animateCounter(el, target, suffix) {
+    let start = 0;
+    const duration = 1800;
+    const startTime = performance.now();
+    function step(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.floor(eased * target);
+      el.textContent = target >= 1000
+        ? (current / 1000).toFixed(current >= 1000 ? 0 : 1) + 'k+' + (suffix||'')
+        : current + (suffix||'');
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target;
+        const target = parseInt(el.dataset.target);
+        const suffix = el.dataset.suffix || '';
+        if (target) animateCounter(el, target, suffix);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+  // ─── HERO SLIDER ───
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dot');
+  let currentSlide = 0;
+  let sliderTimer = null;
+
+  function goToSlide(index) {
+    // Slide out current
+    slides[currentSlide].classList.add('slide-out');
+    setTimeout(() => slides[currentSlide].classList.remove('slide-out'), 600);
+
+    // Deactivate current
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+
+    // Activate new
+    currentSlide = index;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+
+    // Restart timer
+    resetTimer();
+  }
+
+  function nextSlide() {
+    goToSlide((currentSlide + 1) % slides.length);
+  }
+
+  function resetTimer() {
+    clearInterval(sliderTimer);
+    sliderTimer = setInterval(nextSlide, 5000);
+  }
+
+  // Start autoplay
+  resetTimer();
+
+  // ── Stat for 99% uptime
+  document.querySelectorAll('[data-target="99"]').forEach(el => {
+    const orig = el.dataset.target;
+    el.dataset.suffix = '%';
+  });
+</script>
+</body>
+
+</html>
