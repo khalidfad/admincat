@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ – AdminCat</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+
+    /* ─── FAQ PAGE HERO ─── */
+    .faq-hero {
+      background: linear-gradient(135deg, #f0f6ff 0%, #ffffff 60%, #e8f4fd 100%);
+      padding: 80px 5% 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .faq-hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(37,99,235,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .faq-hero .breadcrumb {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue-pale);
+      color: var(--blue);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+      text-decoration: none;
+    }
+
+    .faq-hero .breadcrumb span { color: var(--muted); }
+
+    .faq-hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .faq-hero h1 span {
+      color: var(--blue);
+    }
+
+    .faq-hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      max-width: 520px;
+      margin: 0 auto 36px;
+    }
+
+    /* Search bar */
+    .faq-search-wrap {
+      max-width: 520px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .faq-search-wrap svg {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      width: 18px; height: 18px;
+      pointer-events: none;
+    }
+
+    .faq-search {
+      width: 100%;
+      padding: 16px 18px 16px 48px;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: var(--text);
+      background: #fff;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    .faq-search:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(84,132,195,0.12);
+    }
+
+    .faq-search::placeholder { color: var(--muted); }
+
+    /* ─── FAQ CATEGORY TABS ─── */
+    .faq-main {
+      padding: 70px 5% 90px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .faq-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+      justify-content: center;
+    }
+
+    .faq-tab {
+      background: #fff;
+      border: 2px solid var(--border);
+      color: var(--muted);
+      border-radius: 50px;
+      padding: 10px 22px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all .2s;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .faq-tab:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+
+    .faq-tab.active {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+
+    .faq-tab .tab-icon {
+      font-size: 1rem;
+    }
+
+    /* ─── FAQ LAYOUT ─── */
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* Sidebar */
+    .faq-sidebar {
+      position: sticky;
+      top: 88px;
+    }
+
+    .faq-sidebar-card {
+      background: var(--blue-pale);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+
+    .faq-sidebar-card h4 {
+      font-family: 'Sora', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .faq-sidebar-card p {
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .faq-sidebar-card .btn-primary {
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.88rem;
+    }
+
+    .popular-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .popular-list li a {
+      color: var(--blue);
+      font-size: 0.88rem;
+      font-weight: 500;
+      text-decoration: none;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.5;
+      transition: color .2s;
+    }
+
+    .popular-list li a:hover { color: var(--navy); }
+
+    .popular-list li a::before {
+      content: '→';
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ─── ACCORDION ─── */
+    .faq-category {
+      margin-bottom: 48px;
+    }
+
+    .faq-category-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .faq-category-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: var(--blue-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .faq-category-header h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .faq-category-header span {
+      margin-left: auto;
+      background: var(--blue-pale);
+      color: var(--blue);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .faq-accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    .faq-item:hover {
+      border-color: var(--blue);
+    }
+
+    .faq-item.open {
+      border-color: var(--blue);
+      box-shadow: 0 4px 20px rgba(84,132,195,0.12);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+      font-family: inherit;
+      text-align: left;
+    }
+
+    .faq-question-text {
+      font-size: 0.97rem;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.45;
+      flex: 1;
+    }
+
+    .faq-item.open .faq-question-text {
+      color: var(--blue);
+    }
+
+    .faq-chevron {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      background: var(--blue-pale);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: background .2s, transform .3s;
+    }
+
+    .faq-chevron svg {
+      width: 16px; height: 16px;
+      color: var(--blue);
+      transition: transform .3s;
+    }
+
+    .faq-item.open .faq-chevron {
+      background: var(--blue);
+    }
+
+    .faq-item.open .faq-chevron svg {
+      color: #fff;
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(.4,0,.2,1), padding .3s;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 400px;
+    }
+
+    .faq-answer-inner {
+      padding: 0 24px 22px;
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.75;
+      border-top: 1px solid var(--border);
+      padding-top: 18px;
+    }
+
+    .faq-answer-inner a {
+      color: var(--blue);
+      font-weight: 500;
+    }
+
+    .faq-answer-inner ul {
+      margin: 10px 0 0 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    /* ─── NO RESULTS ─── */
+    .faq-no-results {
+      display: none;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .faq-no-results .no-result-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+    }
+
+    .faq-no-results h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .faq-no-results p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* ─── CTA BAND ─── */
+    .faq-cta {
+      background: linear-gradient(135deg, var(--navy) 0%, #1a4a8a 100%);
+      padding: 70px 5%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .faq-cta::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+      pointer-events: none;
+    }
+
+    .faq-cta h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .faq-cta p {
+      color: rgba(255,255,255,0.65);
+      font-size: 1rem;
+      margin-bottom: 32px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .faq-cta-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-white {
+      background: #fff;
+      color: var(--navy);
+      border: none;
+      border-radius: 10px;
+      padding: 14px 32px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all .2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    }
+
+    .btn-outline-white {
+      background: none;
+      border: 2px solid rgba(255,255,255,0.4);
+      color: #fff;
+      border-radius: 10px;
+      padding: 14px 32px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all .2s;
+    }
+
+    .btn-outline-white:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: #fff;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .faq-layout {
+        grid-template-columns: 1fr;
+      }
+      .faq-sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .faq-sidebar { grid-template-columns: 1fr; }
+      .faq-tabs { gap: 8px; }
+      .faq-tab { padding: 8px 16px; font-size: 0.82rem; }
+      .faq-question { padding: 16px 18px; }
+      .faq-answer-inner { padding: 14px 18px 18px; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══════════════ NAV ═══════════════ -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo.png" width="150">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">Service</a></li>
+      <li><a href="#">Features</a></li>
+      <li><a href="#">Pricing</a></li>
+      <li><a href="faq.html" style="color:var(--blue);font-weight:600">FAQ</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-ghost">Login</button>
+      <button class="btn-primary">Sign up</button>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="#">Service</a>
+    <a href="#">Features</a>
+    <a href="#">Pricing</a>
+    <a href="faq.html">FAQ</a>
+    <a href="#">Login</a>
+    <button class="btn-primary" style="width:100%">Sign up</button>
+  </div>
+
+  <!-- ═══════════════ FAQ HERO ═══════════════ -->
+  <section class="faq-hero">
+    <div class="breadcrumb reveal">
+      <span>Home</span> / FAQ
+    </div>
+    <h1 class="reveal">Got <span>Questions?</span><br>We've Got Answers.</h1>
+    <p class="reveal">Browse our frequently asked questions or search for what you need. Can't find it? Our support team is always here.</p>
+    <div class="faq-search-wrap reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input class="faq-search" id="faqSearch" type="text" placeholder="Search questions… e.g. 'storage', 'billing', 'GDPR'" />
+    </div>
+  </section>
+
+  <!-- ═══════════════ TABS ═══════════════ -->
+  <div style="background:#f8fafc; padding: 24px 5% 0; max-width:100%;">
+    <div class="faq-tabs" id="faqTabs">
+      <button class="faq-tab active" data-cat="all" onclick="filterCat(this,'all')">
+        <span class="tab-icon">⚡</span> All Questions
+      </button>
+      <button class="faq-tab" data-cat="general" onclick="filterCat(this,'general')">
+        <span class="tab-icon">💬</span> General
+      </button>
+      <button class="faq-tab" data-cat="security" onclick="filterCat(this,'security')">
+        <span class="tab-icon">🔒</span> Security & Privacy
+      </button>
+      <button class="faq-tab" data-cat="billing" onclick="filterCat(this,'billing')">
+        <span class="tab-icon">💳</span> Billing & Plans
+      </button>
+      <button class="faq-tab" data-cat="features" onclick="filterCat(this,'features')">
+        <span class="tab-icon">✨</span> Features
+      </button>
+      <button class="faq-tab" data-cat="technical" onclick="filterCat(this,'technical')">
+        <span class="tab-icon">🛠️</span> Technical
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════════════ FAQ MAIN ═══════════════ -->
+  <div class="faq-main">
+    <div class="faq-layout">
+
+      <!-- ── Sidebar ── -->
+      <aside class="faq-sidebar">
+        <div class="faq-sidebar-card reveal">
+          <h4>Still need help?</h4>
+          <p>Our support team is available Monday to Friday, 9am–6pm CET.</p>
+          <button class="btn-primary">Contact Support</button>
+        </div>
+        <div class="faq-sidebar-card reveal" style="background:#fff;border:1.5px solid var(--border);">
+          <h4>Popular topics</h4>
+          <ul class="popular-list">
+            <li><a href="#">How do I reset my password?</a></li>
+            <li><a href="#">Can I export my documents?</a></li>
+            <li><a href="#">Is my data GDPR compliant?</a></li>
+            <li><a href="#">How do I upgrade my plan?</a></li>
+            <li><a href="#">What currencies are supported?</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- ── Accordion ── -->
+      <div class="faq-content" id="faqContent">
+
+        <!-- GENERAL -->
+        <div class="faq-category reveal" data-cat="general">
+          <div class="faq-category-header">
+            <div class="faq-category-icon">💬</div>
+            <h2>General</h2>
+            <span>5 questions</span>
+          </div>
+          <div class="faq-accordion">
+
+            <div class="faq-item open">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span class="faq-question-text">What is AdminCat and who is it for?</span>
+                <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  AdminCat is a personal and family life management platform built to help you organise finances, documents, records, and daily operations from one intuitive dashboard. It's perfect for individuals, freelancers, and families who want full control of their digital life — managed with German-engineered security.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span class="faq-question-text">Is AdminCat free to use?</span>
+                <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Yes — AdminCat offers a free tier with access to core features including document storage (up to 2GB), basic reminders, and family spaces for up to 2 members. Paid plans unlock advanced features, larger storage, and priority support.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span class="faq-question-text">Can I use AdminCat on multiple devices?</span>
+                <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Absolutely. AdminCat is fully web-based and works on any modern browser — desktop, tablet, or mobile. Your data syncs instantly across all your devices so you always have access to the latest version of your documents and records.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span class="faq-question-text">How do I get started with AdminCat?</span>
+                <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Getting started is easy:
+                  <ul>
+                    <li>Sign up for a free account at admincat.net</li>
+                    <li>Complete your profile and set up your family space</li>
+                    <li>Upload your first documents and explore the dashboard</li>
+                    <li>Enable smart reminders and email automations</li>
+                  </ul>
+                  The whole onboarding takes less than 5 minutes.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span class="faq-question-text">Is there a mobile app available?</span>
+                <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  AdminCat is currently a fully responsive web application that works beautifully on mobile browsers. A dedicated iOS and Android app is on our roadmap and coming soon. <a href="#">Join the waitlist</a> to be first to know.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- SECURITY -->
+        <div class="faq-category reveal" data-cat="security">
+          <div class="faq-category-header">
+            <div class="faq-category-icon">🔒</div>
+            <h2>Security & Privacy</h2>
+            <span>4 questions</span>
+          </div>
+          <div class="faq-accordion">
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span class="faq-question-text">Is AdminCat GDPR compliant?</span>
+                <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Yes, fully. AdminCat is built and hosted in Frankfurt, Germany, and complies 100% with the General Data Protection Regulation (GDPR). We never sell your data to third parties, and you maintain full ownership of all your documents and records at all times.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span class="faq-question-text">How is my data encrypted?</span>
+                <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  AdminCat uses double encryption — your data is encrypted in transit using TLS 1.3 and encrypted at rest using AES-256. This means even if someone intercepted your data, it would be completely unreadable without your private keys.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span class="faq-question-text">Does AdminCat support two-factor authentication?</span>
+                <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Yes. We strongly recommend enabling 2FA on your account. You can use an authenticator app (such as Google Authenticator or Authy) or receive codes via SMS. 2FA can be enabled in your account Security Settings.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span class="faq-question-text">Can I delete my account and all my data?</span>
+                <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Yes, you have the right to erasure. You can request complete account deletion from your account settings at any time. All your personal data, documents, and records will be permanently deleted from our servers within 30 days of your request, in line with GDPR requirements.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- BILLING -->
+        <div class="faq-category reveal" data-cat="billing">
+          <div class="faq-category-header">
+            <div class="faq-category-icon">💳</div>
+            <h2>Billing & Plans</h2>
+            <span>4 questions</span>
+          </div>
+          <div class="faq-accordion">
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span class="faq-question-text">What payment methods do you accept?</span>
+                <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  We accept all major credit and debit cards (Visa, Mastercard, American Express), PayPal, SEPA Direct Debit for European customers, and bank transfers for annual enterprise plans. We support over 50 currencies so you can pay in your local currency.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span class="faq-question-text">Can I cancel my subscription at any time?</span>
+                <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Yes, absolutely. There are no long-term contracts. You can cancel your subscription at any time from your billing settings. You'll retain access to your paid plan until the end of your current billing period, after which your account reverts to the free tier.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span class="faq-question-text">Do you offer refunds?</span>
+                <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  We offer a 14-day money-back guarantee on all paid plans. If you're not satisfied for any reason within the first 14 days, contact our support team and we'll issue a full refund — no questions asked.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span class="faq-question-text">How do I upgrade or downgrade my plan?</span>
+                <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  You can upgrade or downgrade your plan at any time from your account's Billing section. When you upgrade, you'll be charged a prorated amount for the remainder of the billing cycle. When you downgrade, the change takes effect at your next renewal date.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- FEATURES -->
+        <div class="faq-category reveal" data-cat="features">
+          <div class="faq-category-header">
+            <div class="faq-category-icon">✨</div>
+            <h2>Features</h2>
+            <span>4 questions</span>
+          </div>
+          <div class="faq-accordion">
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span class="faq-question-text">What is Family Spaces and how does it work?</span>
+                <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Family Spaces lets you create a shared workspace for your household. Each member gets their own private area while you can also share documents, reminders, and records across the family. You can manage permissions for each member — deciding exactly what they can see and edit.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span class="faq-question-text">What file types can I store in the Secure Cloud?</span>
+                <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  AdminCat supports all common file types including PDFs, Word documents, Excel spreadsheets, images (JPG, PNG, HEIC), and more. There is no single file size limit on paid plans. The free plan supports files up to 25MB each.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span class="faq-question-text">How do Smart Emails & Reminders work?</span>
+                <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  You can set up automated reminders for any document, deadline, or recurring event — like passport renewal, insurance renewal, or contract expiry. AdminCat will send you email notifications (and in-app alerts) at your chosen intervals so nothing slips through the cracks.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span class="faq-question-text">Can I export my documents and data?</span>
+                <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Yes. You can export all your documents as a ZIP archive and export your records and data as CSV or PDF at any time. This is available from your account settings under Data Export. We believe your data belongs to you, always.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- TECHNICAL -->
+        <div class="faq-category reveal" data-cat="technical">
+          <div class="faq-category-header">
+            <div class="faq-category-icon">🛠️</div>
+            <h2>Technical</h2>
+            <span>3 questions</span>
+          </div>
+          <div class="faq-accordion">
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span class="faq-question-text">What is AdminCat's uptime guarantee?</span>
+                <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  We guarantee 99% uptime for all paid plans, backed by our SLA. Our infrastructure is hosted on enterprise-grade servers in Frankfurt, Germany with automatic failover and real-time monitoring. You can check live status at any time on our <a href="#">status page</a>.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span class="faq-question-text">Do you have an API I can integrate with?</span>
+                <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Yes. AdminCat provides a RESTful API available on Business and Enterprise plans. You can use it to integrate AdminCat with your own tools, automate document uploads, sync records, and build custom workflows. Full API documentation is available in our <a href="#">developer hub</a>.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span class="faq-question-text">Which browsers does AdminCat support?</span>
+                <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  AdminCat works on all modern browsers including Chrome, Firefox, Safari, Edge, and Opera. We recommend keeping your browser up to date for the best experience and latest security features. Internet Explorer is not supported.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- No results -->
+        <div class="faq-no-results" id="faqNoResults">
+          <div class="no-result-icon">🔍</div>
+          <h3>No results found</h3>
+          <p>Try a different search term or browse by category above.</p>
+        </div>
+
+      </div><!-- /faq-content -->
+    </div><!-- /faq-layout -->
+  </div><!-- /faq-main -->
+
+  <!-- ═══════════════ CTA ═══════════════ -->
+  <section class="faq-cta reveal">
+    <h2>Still have questions?</h2>
+    <p>Our friendly support team is ready to help you. Reach out anytime and we'll get back to you within one business day.</p>
+    <div class="faq-cta-btns">
+      <button class="btn-white">Contact Support</button>
+      <button class="btn-outline-white">View Documentation</button>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3><img src="images/logo.png" width="150"></h3>
+        <p>The ultimate dashboard for the modern digital sovereign. Managed in Germany, deployed globally.</p>
+        <div class="footer-social">
+          <button class="social-btn">𝕏</button>
+          <button class="social-btn">in</button>
+          <button class="social-btn">f</button>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Security Hub</a></li>
+          <li><a href="#">Modules</a></li>
+          <li><a href="#">Roadmap</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">Community Forum</a></li>
+          <li><a href="#">API Status</a></li>
+          <li><a href="#">Help Center</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 AdminCat Infrastructure GmbH. All rights reserved. Made with ❤ from Germany &amp; Nigeria</p>
+      <div class="footer-badge">
+        <span class="badge-dot"></span>
+        All systems operational
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Mobile menu
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const burger = document.querySelector('.hamburger');
+      menu.classList.toggle('open');
+      burger.classList.toggle('active');
+    }
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.remove('open');
+        document.querySelector('.hamburger').classList.remove('active');
+      });
+    });
+    document.addEventListener('click', (e) => {
+      const menu = document.getElementById('mobileMenu');
+      const burger = document.querySelector('.hamburger');
+      if (menu.classList.contains('open') && !menu.contains(e.target) && !burger.contains(e.target)) {
+        menu.classList.remove('open');
+        burger.classList.remove('active');
+      }
+    });
+
+    // ── Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => observer.observe(el));
+
+    // ── Sticky nav shadow
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').style.boxShadow =
+        window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,0.08)' : 'none';
+    });
+
+    // ── Accordion toggle
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      // Close all in same accordion
+      item.closest('.faq-accordion').querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // ── Category filter tabs
+    function filterCat(btn, cat) {
+      document.querySelectorAll('.faq-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.faq-category').forEach(cat => cat.style.display = '');
+      if (cat !== 'all') {
+        document.querySelectorAll('.faq-category').forEach(c => {
+          c.style.display = c.dataset.cat === cat ? '' : 'none';
+        });
+      }
+      // Clear search
+      document.getElementById('faqSearch').value = '';
+      document.getElementById('faqNoResults').style.display = 'none';
+    }
+
+    // ── Search
+    document.getElementById('faqSearch').addEventListener('input', function () {
+      const query = this.value.toLowerCase().trim();
+      let anyVisible = false;
+
+      // Reset tab
+      document.querySelectorAll('.faq-tab').forEach(t => t.classList.remove('active'));
+      document.querySelector('[data-cat="all"]').classList.add('active');
+
+      document.querySelectorAll('.faq-category').forEach(cat => {
+        let catHasMatch = false;
+        cat.querySelectorAll('.faq-item').forEach(item => {
+          const q = item.querySelector('.faq-question-text').textContent.toLowerCase();
+          const a = item.querySelector('.faq-answer-inner').textContent.toLowerCase();
+          const match = !query || q.includes(query) || a.includes(query);
+          item.style.display = match ? '' : 'none';
+          if (match) { catHasMatch = true; anyVisible = true; }
+        });
+        cat.style.display = catHasMatch ? '' : 'none';
+      });
+
+      document.getElementById('faqNoResults').style.display = anyVisible || !query ? 'none' : 'block';
+    });
+  </script>
+
+</body>
+</html>
