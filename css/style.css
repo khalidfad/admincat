@@ -782,12 +782,16 @@ nav {
 /* ─── TESTIMONIAL ─── */
 .testimonial {
     padding: 100px 5%;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cdefs%3E%3Cfilter id='b'%3E%3CfeGaussianBlur stdDeviation='80'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='%230f172a'/%3E%3Ccircle cx='20%25' cy='50%25' r='300' fill='%231e3a5f' filter='url(%23b)'/%3E%3Ccircle cx='80%25' cy='50%25' r='250' fill='%231e3a5f' filter='url(%23b)'/%3E%3C/svg%3E") center/cover;
+    background: 
+        linear-gradient(rgba(4, 56, 115, 0.75), rgba(4, 56, 115, 0.75)),
+        url("../images/image-bg.png") center/cover no-repeat;
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 60px;
     align-items: center;
     max-width: 100%;
+
+    
 }
 
 .testimonial-photo {
